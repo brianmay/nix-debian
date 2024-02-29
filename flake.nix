@@ -28,8 +28,12 @@
         pkgs = nixpkgs.legacyPackages.${system};
       in {
         devShells.default = pkgs.mkShell {
-          packages =
-            [ pkgs.dpkg poetry_env bampkgbuild.packages.${system}.default ];
+          packages = [
+            pkgs.dpkg
+            pkgs.debian-devscripts
+            poetry_env
+            bampkgbuild.packages.${system}.default
+          ];
         };
       });
 }
