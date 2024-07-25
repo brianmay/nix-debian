@@ -2,7 +2,7 @@
   description = "Build Debian packages from NIX";
 
   inputs.flake-utils.url = "github:numtide/flake-utils";
-  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
+  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
   inputs.poetry2nix = {
     url = "github:nix-community/poetry2nix";
     inputs.nixpkgs.follows = "nixpkgs";
@@ -31,6 +31,7 @@
           packages = [
             pkgs.dpkg
             pkgs.debian-devscripts
+            pkgs.poetry
             poetry_env
             bampkgbuild.packages.${system}.default
           ];
