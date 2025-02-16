@@ -1,17 +1,9 @@
-[tool.poetry]
+[project]
 name = "nix-debian"
 version = "0.0.0"
 description = "Build Debian packages from NIX"
-authors = ["Brian May <brian@linuxpenguins.xyz>"]
-license = "GPL3"
+authors = [ {name="Brian May", email="brian@linuxpenguins.xyz"}, ]
 readme = "README.md"
-packages = [{include = "nix_debian"}]
-
-[tool.poetry.dependencies]
-python = "^3.10"
-gbp = "^0.9.32"
-
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+dependencies = [
+    "gbp == 0.9.32",]
+requires-python = ">=3.9"
