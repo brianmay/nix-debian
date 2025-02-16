@@ -9,16 +9,28 @@
   };
   inputs.bampkgbuild.url = "github:brianmay/bampkgbuild";
 
-  outputs = { self, nixpkgs, flake-utils, poetry2nix, bampkgbuild }:
-    flake-utils.lib.eachDefaultSystem (system:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      flake-utils,
+      poetry2nix,
+      bampkgbuild,
+    }:
+    flake-utils.lib.eachDefaultSystem (
+      system:
       let
         p2n = import poetry2nix { inherit pkgs; };
-        overrides = p2n.defaultPoetryOverrides.extend (self: super: {
-          gbp = super.gbp.overridePythonAttrs (old: {
-            buildInputs = (old.buildInputs or [ ])
-              ++ [ super.setuptools super.nosexcover ];
-          });
-        });
+        overrides = p2n.defaultPoetryOverrides.extend (
+          self: super: {
+            gbp = super.gbp.overridePythonAttrs (old: {
+              buildInputs = (old.buildInputs or [ ]) ++ [
+                super.setuptools
+                super.nosexcover
+              ];
+            });
+          }
+        );
 
         poetry_env = p2n.mkPoetryEnv {
           python = pkgs.python3;
@@ -26,7 +38,8 @@
           inherit overrides;
         };
         pkgs = nixpkgs.legacyPackages.${system};
-      in {
+      in
+      {
         devShells.default = pkgs.mkShell {
           packages = [
             pkgs.dpkg
@@ -36,5 +49,6 @@
             bampkgbuild.packages.${system}.default
           ];
         };
-      });
+      }
+    );
 }
