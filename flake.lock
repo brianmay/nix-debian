@@ -9,11 +9,11 @@
         "uv2nix": "uv2nix"
       },
       "locked": {
-        "lastModified": 1785464664,
-        "narHash": "sha256-hC/rJZEswLCyxTljzxrekKdmCV+aRUAW8bGnOE+dJBk=",
+        "lastModified": 1785465058,
+        "narHash": "sha256-aju/OQfzmbDDY5697gOh8LGKw129rq79wsQCqMDVrSA=",
         "owner": "brianmay",
         "repo": "bampkgbuild",
-        "rev": "0cd09a888cd258bb50b4de6f3dca1f4895640795",
+        "rev": "91fb9d518b9c22f9ae543bf1c6abc7ab7b1292cd",
         "type": "github"
       },
       "original": {
