@@ -5,5 +5,16 @@ description = "Build Debian packages from NIX"
 authors = [ {name="Brian May", email="brian@linuxpenguins.xyz"}, ]
 readme = "README.md"
 dependencies = [
-    "gbp == 0.9.32",]
+    "debgpt>=0.6",
+    "gbp == 0.9.32",
+]
 requires-python = ">=3.9"
+
+[tool.uv]
+# Force prebuilt wheels for Rust-extension packages whose maturin build
+# backend would otherwise need puccinialin (a rust bootstrapper whose own
+# runtime deps loop back into this venv) when built from sdist.
+no-build-package = [
+  "jiter",
+  "pydantic-core",
+]
